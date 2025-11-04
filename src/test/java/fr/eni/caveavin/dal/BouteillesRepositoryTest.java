@@ -18,6 +18,9 @@ public class BouteillesRepositoryTest {
     @Autowired
     private BouteillesRepository bouteillesRepository;
 
+    @Autowired
+    private RegionsRepository regionsRepository;
+
     @Test
     @DisplayName("test d'ajout d'une bouteille dont le nom est déjà présent en base")
     void testAjoutBouteilleCasNomBouteilleDejaExistante(){
@@ -37,19 +40,18 @@ public class BouteillesRepositoryTest {
         }
 
         //Assert
-
     }
-
 
     @Test
     void testAjoutBouteilleCasOk(){
         //Arrange
+        regionsRepository.deleteAll();
+        Region bordeaux = regionsRepository.save(new Region("Bordeaux"));
         bouteillesRepository.deleteAll();
         Bouteille bouteille = new Bouteille("Château Cheval Blanc",
                 2015);
-        bouteille.setRegion(new Region("Bordeaux"));
+        bouteille.setRegion(bordeaux);
         bouteille.setCouleur(new Couleur("Rouge"));
-
         //Act
         Bouteille newBouteille = bouteillesRepository.save(bouteille);
         //Assert

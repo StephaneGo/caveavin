@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ public class Bouteille {
 
     @NonNull  private Integer millesime;
 
+    @DocumentReference
     private Region region;
 
     private Couleur couleur;

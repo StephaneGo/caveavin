@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: caveavin
+  #Data Source
+  data:
+    mongodb:
+      #username: sa
+      #password: Passw0rd
+      host: localhost
+      port: 27017
+      database: CAVE_DB
+      #authentication-database: admin
+      auto-index-creation: true
+
+#Log
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+
